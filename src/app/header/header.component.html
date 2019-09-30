@@ -1,0 +1,79 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="">
+      <img src="assets/images/Restaurant.jpg" alt=""> Hexa Kitchen
+  </a>
+
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/Vendor">Vendor</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/Employee">Employee</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/Admin">Admin</a>
+      </li>      
+    </ul>
+
+    <ul class="navbar-nav navbar-right">
+
+        <button class="nav-item btn btn-primary">
+            <a class="nav-link" routerLink="/Login">Login</a>
+        </button>
+    </ul>
+  </div>
+</nav> -->
+
+
+
+<header>
+  <div class="bg-dark collapse" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Hexa Kitchen offers ordering Menu by Employee.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+
+        <a class="navbar-brand" routerLink="">
+            <img src="assets/images/Restaurant.jpg" alt=""> 
+            <strong routerLink="">Hexa Kitchen</strong>
+        </a>
+        
+      </a>
+      <ul class="ml-auto">        
+              <button class="nav-item btn btn-default">
+                  <a class="nav-link" routerLink="/Login">Login</a>
+              </button>
+            &nbsp;
+           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader"
+            aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+      </ul>
+      
+    </div>
+  </div>
+</header>

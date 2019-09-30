@@ -1,0 +1,28 @@
+
+.img
+{
+    width:200px ;
+    height: 150px;
+    
+}
+
+/* .btn
+     {
+      text-align: center;
+       color: black;
+       background-color: grey;
+     } */
+.addbtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-color: black;
+    
+    overflow: hidden;
+    outline:black;
+    float: right;
+
+}
+.p
+{
+    text-decoration-style: dashed;
+}
