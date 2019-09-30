@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SouthVendorService } from './south-vendor.service';
 
 @Component({
   selector: 'app-south-vendor',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SouthVendorComponent implements OnInit {
 
-  constructor() { }
+  southVendors: SouthVendor[];
+  errorMsg : any;
+  editSouthItem: SouthVendor;
+
+  constructor(public southService : SouthVendorService) { }
 
   ngOnInit() {
+    this.southService.getSouthItems().subscribe(
+      data => this.southVendors = data,
+      error => this.errorMsg = error
+    );
   }
 
+  
 }
