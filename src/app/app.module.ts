@@ -14,6 +14,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SouthVendorComponent } from './south-vendor/south-vendor.component';
 import { IndoChinsesVendorComponent } from './indo-chinses-vendor/indo-chinses-vendor.component';
 import { NorthVendorComponent } from './north-vendor/north-vendor.component';
+import { LoginComponent } from './login/login.component';
+import{ VendorDetailsComponent } from './vendor-details/vendor-details.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +33,13 @@ import { NorthVendorComponent } from './north-vendor/north-vendor.component';
     FooterComponent,
     SouthVendorComponent,
     IndoChinsesVendorComponent,
-    NorthVendorComponent
+    NorthVendorComponent,
+    LoginComponent,
+    VendorDetailsComponent,
+    EmployeeDetailsComponent,
+    OrderDetailsComponent,
+    PendingOrdersComponent,
+    PageNotFoundComponent 
   ],
   imports: [
     BrowserModule,

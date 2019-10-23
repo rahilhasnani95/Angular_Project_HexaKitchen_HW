@@ -1,0 +1,17 @@
+#vendor{
+    background: url("/assets/images/vendor.gif");  
+background-size: cover;     
+
+background-repeat: no-repeat;
+
+height: 100%;
+}
+/* .btn1
+{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+} */

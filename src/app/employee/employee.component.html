@@ -1,30 +1,90 @@
 <main role="main">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">All Menu</h1>
-            <p class="lead text-muted">Indian Chinese cuisine or Sino-Indian cuisine is the adaptation of Chinese
-                seasoning and cooking techniques to Indian tastes through a larger offering to also include vegetarian
-                dishes.
-                The Indian-style Chinese cuisine is said to have been developed by the small Chinese community that has
-                lived in Kolkata for over a century.</p>
-            <!-- <p>
-                <a href="#" class="btn btn-primary my-2">Add More Items</a>
+    <section style="height: 50px">
+        <div class="text-center">
+            <button class="btn btn-outline-dark btn-lg" style="float: right" routerLink=''>Logout</button>
 
-            </p> -->
+            <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#mymodal">My
+                Profile</button>
+
+            <button style="float: left;" class="btn btn-lg btn-outline-primary"><a href="Employee#addmoney">Add Wallet
+                    Balance</a></button> <br>
+            <!-- <h5 style="text-align: center">My Wallet Balance: ${{empBalance}}</h5> -->
         </div>
     </section>
 
-    <div class="album py-5 bg-light">
+    <section class="jumbotron text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3" *ngFor="let n of employeeMenu">
+            <h1 class="jumbotron-heading">Menu</h1><br>
+            <p class="text-muted"><strong>Indian Chinese</strong> cuisine or <strong>Sino-Indian</strong> cuisine is the
+                adaptation of Chinese
+                seasoning and cooking techniques to Indian tastes through a larger offering to also include vegetarian
+                dishes.
+            </p>
+            <p class="text-muted"><strong>North Indian</strong> cuisine is a form of cuisine, from the region of
+                Northern India which
+                include cuisines of
+                Jammu and Kashmir, Punjab, Chandigarh, Haryana, Himachal Pradesh, Rajasthan, Uttarakhand, Delhi, Uttar
+                Pradesh
+                and Bihar (Bhojpuri Cuisine) as well as central regions like Madhya Pradesh.</p>
+            <p class="text-muted">
+                <strong>South Indian</strong> cuisine includes the cuisines of the
+                five southern states of India—Andhra Pradesh, Karnataka, Kerala, Tamil Nadu
+                and Telangana—and the union territories of Lakshadweep, Pondicherry, and the
+                Andaman and Nicobar Islands.
+            </p>
+        </div>
 
-                    <div class="card mb-4 box-shadow">
+        <!-- <button type="reset" (click)="location.href='#myCart'">
+            My Cart</button> -->
+
+    </section>
+
+    <!-- Profile Modal -->
+    <div class="modal fade" id="mymodal" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">My Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div>
+                        <img class="img" style="float: right;" src="/assets/images/rahil.jpg">
+                        <strong>
+                            <label> <i class="fas fa-user"></i>&nbsp; Name: </label> Emp1 <br> <br>
+                            <label> <i class="fas fa-location-arrow"></i> &nbsp;Address: </label> 1234 Peachtree Rd,
+                            Atlanta, GA-30328 <br> <br>
+                            <label> <i class="fas fa-mobile-alt"></i> &nbsp;Contact No: 8325689731</label> <br> <br>
+                            <label> <i class="fas fa-envelope-open"></i> &nbsp; Email Id: </label> emp1@gmail.com <br>
+                            <br>
+                            <label> <i class="fas fa-dollar-sign"></i> &nbsp;Wallet Balance: </label> $50 <br> </strong>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <button style="float: right;" class="btn btn-lg btn-outline-primary"><a href="Employee#mycart">My
+                cart</a></button>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-3" *ngFor="let n of indoMenu">
+
+                    <div class="card mb-4 box-shadow img-hover-zoom">
                         <img class="card-img-top"
                             data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
                             alt="Thumbnail [100%x225]" src="{{n.image}}" data-holder-rendered="true"
-                            style="height: 225px; width: 100%; display: block;">
+                            style="height: 190px; width: 100%; display: block;">
 
                         <div class="card-body">
                             <p class="card-text"><strong *ngIf="n!==editSouthItem">{{n.name}}</strong><span
@@ -32,29 +92,135 @@
                             </p>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <input *ngIf="n===editSouthItem" [(ngModel)]="n.name" type="text" (blur)="update()"
-                                    (keyup.enter)="update()">
 
-                                <input *ngIf="n===editSouthItem" [(ngModel)]="n.price" type="number" (blur)="update()"
-                                    (keyup.enter)="update()">
+                                <button type="button" class="btn btn-sm btn-outline-primary" title="Add to Your Order"
+                                    (click)="details1(n)">Add to Order</button>
 
-                                
-                                    <!-- <button type="button" class="btn btn-sm btn-outline-warning" title="Edit Menu Item"
-                                        (click)="edit(n)">
-                                        Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" title="Delete Menu Item"
-                                        (click)="delete(n)">Delete</button>                                         -->
-                                        <button type="button" class="btn btn-sm btn-outline-primary" title="Add to Your Order"
-                                        (click)="edit(n)">
-                                        Add to Order</button>
-                            
+                                <!-- <a [routerLink]="['/cart', { id:employeemenu.id }]">Buy Now</a>    -->
 
                             </div>
                         </div>
                     </div>
-                       
                 </div>
+
+
+                <div class="col-md-3" *ngFor="let n of southMenu">
+
+                    <div class="card mb-4 box-shadow img-hover-zoom">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                            alt="Thumbnail [100%x225]" src="{{n.image}}" data-holder-rendered="true"
+                            style="height: 190px; width: 100%; display: block;">
+
+                        <div class="card-body">
+                            <p class="card-text"><strong *ngIf="n!==editSouthItem">{{n.name}}</strong><span
+                                    style="float: right"><strong *ngIf="n!==editSouthItem">${{n.price}}</strong></span>
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <button type="button" class="btn btn-sm btn-outline-primary" title="Add to Your Order"
+                                    (click)="details2(n)">Add to Order</button>
+
+                                <!-- <a [routerLink]="['/cart', { id:employeemenu.id }]">Buy Now</a>    -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3" *ngFor="let n of northMenu">
+
+                    <div class="card mb-4 box-shadow img-hover-zoom">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                            alt="Thumbnail [100%x225]" src="{{n.image}}" data-holder-rendered="true"
+                            style="height: 190px; width: 100%; display: block;">
+
+                        <div class="card-body">
+                            <p class="card-text"><strong *ngIf="n!==editSouthItem">{{n.name}}</strong><span
+                                    style="float: right"><strong *ngIf="n!==editSouthItem">${{n.price}}</strong></span>
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <button type="button" class="btn btn-sm btn-outline-primary" title="Add to Your Order"
+                                    (click)="details3(n)">Add to Order</button>
+
+                                <!-- <a [routerLink]="['/cart', { id:employeemenu.id }]">Buy Now</a>    -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
+            <br>
+            <hr>
+            <h5 style="text-align: center">My Wallet Balance: ${{empBalance}}</h5>
+
+            <section id="addmoney" style="float: right;">
+                <h3><i class="fas fa-money-bill-alt"></i> Add Balance</h3>
+                <hr>
+
+                <!-- <label for="amount">Amount</label> <input type="number" class="form-control" required
+                    min="4" [(ngModel)]="amount" name="amount" #amount="ngModel">
+                <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger">
+                    <div *ngIf="amount.errors.required">
+                        Amount is required.
+                    </div>
+                    <div *ngIf="amount.errors.min">
+                        Amount must be > 0
+                    </div>
+                </div> -->
+
+                <input type="number" [(ngModel)]="amount" placeholder="Enter Amount" min="1" required> <br><br>
+                <button class="btn btn-sm btn-outline-success" (click)="addBalance()">Add Money to Wallet</button>
+            </section>
+
+            <section id="mycart" style="position: inherit;">
+                <h3><i class="fas fa-shopping-cart"></i>&nbsp; My Cart</h3>
+                <table style="width: 40%" class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Item Price</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let l of list1" let result=0>
+
+                            <td>{{l.name}}</td>
+                            <td>${{l.price}}</td>
+                            <td><button class="btn btn-danger btn-sm" (click)="deleteItem1(l)">x</button></td>
+                        </tr>
+                        <tr *ngFor="let l of list2" let result=0>
+
+                            <td>{{l.name}}</td>
+                            <td>${{l.price}}</td>
+                            <td><button class="btn btn-danger btn-sm" (click)="deleteItem2(l)">x</button></td>
+                        </tr>
+
+                        <tr *ngFor="let l of list3" let result=0>
+
+                            <td>{{l.name}}</td>
+                            <td>${{l.price}}</td>
+                            <td><button class="btn btn-danger btn-sm" (click)="deleteItem3(l)">x</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+               <strong><span style="font-size: x-large">Total : ${{total}} </span></strong> &nbsp;&nbsp;
+
+                <button *ngIf="list1.length>0 || list2.length>0 || list3.length" class=" btn btn-outline-primary btn-lg"
+                    (click)="checkOut(l)">Checkout</button>
+
+            </section>
+
         </div>
     </div>
 </main>

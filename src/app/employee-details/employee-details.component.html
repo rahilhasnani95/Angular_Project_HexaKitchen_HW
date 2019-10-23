@@ -1,0 +1,95 @@
+<main role="main">
+        <button class="btn btn-outline-dark btn-lg" style="float: right" routerLink=''>Logout</button>
+    <section class="jumbotron" id="employee">
+        <div class="container">
+            <h1 class="jumbotron-heading text-center" style="color: white">Employee's Details</h1>
+            <button type="button" class="btn1 btn-primary my-2 text-center" data-toggle="modal" data-target="#myModal">Add
+                Employee</button>
+        </div>
+   
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form #userForm="ngForm" (submit)="add(userForm)">
+                        <div class="form-group">
+                            <label>Employee Id :</label>
+                            <input type="number" required #empId="ngModel" class="form-control" style="width:200px"
+                                ngModel name="id" [ngClass]="{ 'is-invalid': userForm.submitted && empId.invalid }">
+
+                            <div *ngIf="empId.invalid && (empId.dirty || empId.touched)" class="alert alert-danger">
+                                <div *ngIf="empId.errors.required">
+                                    Employee Id is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                <input type="image" src="assets/images/rohit.jpg" class="card-img-top form-control"
+                                style="height: 250px; width: 75%; display: block; border-radius: 60%;" #itemImage="ngModel" ngModel
+                                name="image">
+                            <label>Employee Name: </label>
+                            <input type="text" required #empName="ngModel" class="form-control" style="width:200px"
+                                ngModel name="name" [ngClass]="{ 'is-invalid': userForm.submitted && empName.invalid }">
+                            <div *ngIf="empName.invalid && (empName.dirty || empName.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="empName.errors.required">
+                                    Employee Name is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" [disabled]='userForm.form.invalid' class="btn btn-success">Add
+                            Employee</button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div >
+        <div class="container text-center" >
+            <div class="row table-wrap">
+                <table  class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th >Employee ID</th>
+                            <th>Employee Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let n of employeeDetails">
+                                <td><img class="img" *ngIf="n!==editEmployeeDetails" src="{{n.image}}"></td>
+                            <td ><strong *ngIf="n!==editEmployeeDetails">{{n.id}}</strong></td>
+                            <td ><strong *ngIf="n!==editEmployeeDetails">{{n.name}}</strong></td>
+
+                            <input *ngIf="n===editEmployeeDetails" [(ngModel)]="n.id" type="number" (blur)="update()"
+                                (keyup.enter)="update()">
+                            <input *ngIf="n===editEmployeeDetails" [(ngModel)]="n.name" type="text" (blur)="update()"
+                                (keyup.enter)="update()">
+                            <div class="btn-group">
+                                <td><button type="button" class="btn btn-md btn-outline-warning" title="Edit"
+                                        (click)="edit(n)">Edit</button></td>
+                                <td><button type="button" class="btn btn-md btn-outline-danger" title="Delete"
+                                        (click)="delete(n)">Delete</button></td>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</main>

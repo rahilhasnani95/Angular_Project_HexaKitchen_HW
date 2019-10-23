@@ -24,12 +24,20 @@ export class NorthVendorComponent implements OnInit {
 
   add(addForm: NgForm): void {
     this.editNorthItem = undefined;
-    // name = name.trim();    
+    // name = name.trim();        
+
     if (!addForm.value.name) {
+      alert("Item Price can't be empty");
       return;
     }
 
     if (!addForm.value.price) {
+      alert("Item Price can't be empty");
+      return;
+    }
+
+    if (addForm.value.price < 0) {
+      alert("Item Price can't be negative");
       return;
     }
 

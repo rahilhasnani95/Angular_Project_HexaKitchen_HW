@@ -1,4 +1,5 @@
 <main role="main">
+        <button class="btn btn-outline-dark btn-lg" style="float: right" routerLink=''>Logout</button>
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Your Menu</h1>
@@ -9,6 +10,10 @@
                 and Bihar (Bhojpuri Cuisine) as well as central regions like Madhya Pradesh.</p>
 
             <button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#myModal">Add Item</button>
+            &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="button" class="btn btn-primary my-2" routerLink="/OrderDetails"> View History</button>
+            &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="button" class="btn btn-primary my-2" routerLink="/PendingOrder"> Pending Requests</button>
         </div>
     </section>
 
@@ -28,8 +33,11 @@
                             <input type="text" required #itemName="ngModel" class="form-control" style="width:200px"
                                 ngModel name="name"
                                 [ngClass]="{ 'is-invalid': userForm.submitted && itemName.invalid }">
-                            <div *ngIf="userForm.submitted && itemName.invalid" class="invalid-feedback">
-                                <div *ngIf="itemName.errors.required">Item Name is required</div>
+                        
+                            <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)" class="alert alert-danger">
+                                    <div *ngIf="itemName.errors.required">
+                                        Item Name is required
+                                    </div>                                                
                             </div>
                         </div>
 
@@ -38,8 +46,11 @@
                             <input type="number" required #itemPrice="ngModel" class="form-control" style="width:200px"
                                 ngModel name="price"
                                 [ngClass]="{ 'is-invalid': userForm.submitted && itemPrice.invalid }">
-                            <div *ngIf="userForm.submitted && itemPrice.invalid" class="invalid-feedback">
-                                <div *ngIf="itemPrice.errors.required">Item Price is required</div>
+
+                            <div *ngIf="itemPrice.invalid && (itemPrice.dirty || itemPrice.touched)" class="alert alert-danger">
+                                    <div *ngIf="itemPrice.errors.required">
+                                        Item Price is required
+                                    </div>                                                
                             </div>
                         </div>
 
@@ -54,7 +65,7 @@
                                 style="height: 250px; width: 100%; display: block;" #itemImage="ngModel" ngModel
                                 name="image">
                         </div>
-                        <button type="submit" class="btn btn-success">Add Item</button>
+                        <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-success">Add Item</button>
 
                     </form>
                 </div>
@@ -67,6 +78,8 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
+                <h5 style="text-align: center">My Account Balance: $500</h5><br>
+
             <div class="row">
                 <!-- <div class="container">
                             <div class="row">
@@ -81,11 +94,11 @@
                             </div>
                     </div> -->
                 <div class="col-md-4" *ngFor="let n of northVendors">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card mb-4 box-shadow img-hover-zoom">
                         <img class="card-img-top"
                             data-src="holder.js/100px250?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
                             alt="Thumbnail [100%x250]" src="{{n.image}}" data-holder-rendered="true"
-                            style="height: 250px; width: 100%; display: block;">
+                            style="height: 190px; width: 100%; display: block;">
                         <div class="card-body">
                             <p class="card-text"><strong *ngIf="n!==editNorthItem">{{n.name}}</strong><span
                                     style="float: right"><strong *ngIf="n!==editNorthItem">${{n.price}}</strong></span>

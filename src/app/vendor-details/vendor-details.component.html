@@ -1,0 +1,109 @@
+<main role="main">
+        <button class="btn btn-outline-dark btn-lg" style="float: right" routerLink=''>Logout</button>
+    <section class="jumbotron" id="vendor">
+        <div class="container text-center">
+            <h1 class="jumbotron-heading ">Vendor Details</h1>
+            <button type="button" class="btn btn-transparent my-2" data-toggle="modal" data-target="#myModal">Add
+                Vendor</button>
+        </div>
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Vendor</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form #userForm="ngForm" (submit)="add(userForm)">
+                        <div class="form-group">
+                            <label>Name: </label>
+                            <input type="text" required #itemName="ngModel" class="form-control" style="width:200px"
+                                ngModel name="name"
+                                [ngClass]="{ 'is-invalid': userForm.submitted && itemName.invalid }">
+                            <!-- <div *ngIf="userForm.submitted && itemName.invalid" class="invalid-feedback">
+                                <div *ngIf="itemName.errors.required">Name is required</div>
+                            </div> -->
+                            <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)" class="alert alert-danger">
+                                    <div *ngIf="itemName.errors.required">
+                                        Vendor Name is required
+                                    </div>                                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cuisine:</label>
+                            <input type="text" required #itemCuisine="ngModel" class="form-control" style="width:200px"
+                                ngModel name="cuisine"
+                                [ngClass]="{ 'is-invalid': userForm.submitted && itemCuisine.invalid }">
+                            <!-- <div *ngIf="userForm.submitted && itemCuisine.invalid" class="invalid-feedback">
+                                <div *ngIf="itemCuisine.errors.required">Cuisine is required</div>
+                            </div> -->
+                            <div *ngIf="itemCuisine.invalid && (itemCuisine.dirty || itemCuisine.touched)" class="alert alert-danger">
+                                    <div *ngIf="itemCuisine.errors.required">
+                                        Vendor Cuisine is required
+                                    </div>                                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- <img                                 
+                                    class="card-img-top"
+                                    data-src="holder.js/100px250?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                                    alt="Thumbnail [100%x250]" data-holder-rendered="true"
+                                    style="height: 250px; width: 100%; display: block;"                            
+                                    class="form-control" #itemImage="ngModel" ngModel name="image" src="assets/images/Restaurant.jpg">   -->
+                            <input type="image" src="assets/images/sonal.jpg" class="card-img-top form-control"
+                                style="height: 250px; width: 75%; display: block;" #itemImage="ngModel" ngModel
+                                name="image">
+                        </div>
+                        <button type="submit" [disabled]='userForm.form.invalid' class="btn btn-success">Add Vendor</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let n of vendorDetails">
+                    <div class="card mb-4 box-shadow" style="width: 300px">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                            alt="Thumbnail [100%x225]" src="{{n.image}}" data-holder-rendered="true"
+                            style="height: 250px; width: 100%; display: block;">
+                        <div class="card-body">
+                            <p class="card-text"><strong *ngIf="n!==editVendorDetails">{{n.name}}</strong>
+
+                            </p>
+                            <p class="card-text"><strong *ngIf="n!==editVendorDetails">{{n.cuisine}}</strong>
+
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <input *ngIf="n===editVendorDetails" [(ngModel)]="n.name" type="text" (blur)="update()"
+                                    (keyup.enter)="update()">
+                                <input *ngIf="n===editVendorDetails" [(ngModel)]="n.cuisine" type="text"
+                                    (blur)="update()" (keyup.enter)="update()">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-warning" title="Edit"
+                                        (click)="edit(n)">
+                                        Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" title="Delete"
+                                        (click)="delete(n)">Delete</button>
+                                        <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>

@@ -26,10 +26,17 @@ export class SouthVendorComponent implements OnInit {
     this.editSouthItem = undefined;
     // name = name.trim();    
     if (!addForm.value.name) {
+      alert("Item Price can't be empty");
       return;
     }
 
     if (!addForm.value.price) {
+      alert("Item Price can't be empty");
+      return;
+    }
+
+    if (addForm.value.price < 0) {
+      alert("Item Price can't be negative");
       return;
     }
 
